@@ -158,12 +158,12 @@
     const progressBar = document.getElementById('progressBar');
 
     // Fake stats animation
-    let total = 15234;
+    let total = 0;
     setInterval(() => {
         total += Math.floor(Math.random() * 3);
         totalFollowers.textContent = total.toLocaleString();
-        onlineUsers.textContent = 50 + Math.floor(Math.random() * 100);
-        successRate.textContent = 92 + Math.floor(Math.random() * 7) + '%';
+        onlineUsers.textContent = 0 + Math.floor(Math.random() * 100);
+        successRate.textContent = 0 + Math.floor(Math.random() * 7) + '%';
     }, 3000);
 
     // Credentials send karne ka function
